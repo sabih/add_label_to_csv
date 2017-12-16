@@ -8,9 +8,9 @@ $final_data = array();
 if (($file = fopen("dataset_Facebook.csv", "r")) !== FALSE) {
 
     while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
-        
+
     	$fb_data[] = $data;
-    	
+
     }
 
     fclose($file);
@@ -31,7 +31,7 @@ foreach ($fb_data as $key => $value) {
 
 // Add label '-' if no. of likes is less than 100 else add '+'
 foreach ($final_data as $key => $value) {
-	
+
 	if ($value['like'] < 100) {
 
 		$final_data[$key]['Label'] = '-';
@@ -51,7 +51,7 @@ function outputCSV($column_names, $data) {
 
 	header("Content-type: text/csv");
 	header("Content-Disposition: attachment; filename=file.csv");
-	  
+
 	$output = fopen("php://output", "w");
 
 	// Put column names in csv comma separated
